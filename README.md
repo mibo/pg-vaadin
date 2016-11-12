@@ -3,6 +3,18 @@ vaadin-app
 
 Template for a simple Vaadin application that only requires a Servlet 3.0 container to run.
 
+## Notes
+Archetype generated based on [Vaadin Maven Docu](https://vaadin.com/maven) with following command:
+
+```
+mvn -B archetype:generate \
+-DarchetypeGroupId=com.vaadin \
+-DarchetypeArtifactId=vaadin-archetype-application \
+-DarchetypeVersion=7.7.3 \
+-DgroupId=de.mirb.pg.vaadin \
+-DartifactId=vaadin-app \
+-Dversion=0.1.0-SNAPSHOT
+```
 
 Workflow
 ========
@@ -19,8 +31,8 @@ To produce a deployable production mode WAR:
 Client-Side compilation
 -------------------------
 
-The generated maven project is using an automatically generated widgetset by default. 
-When you add a dependency that needs client-side compilation, the maven plugin will 
+The generated maven project is using an automatically generated widgetset by default.
+When you add a dependency that needs client-side compilation, the maven plugin will
 automatically generate it for you. Your own client-side customisations can be added into
 package "client".
 
@@ -35,11 +47,11 @@ When developing the theme, Vaadin can be configured to compile the SASS based
 theme at runtime in the server. This way you can just modify the scss files in
 your IDE and reload the browser to see changes.
 
-To use the runtime compilation, open pom.xml and comment out the compile-theme 
-goal from vaadin-maven-plugin configuration. To remove a possibly existing 
+To use the runtime compilation, open pom.xml and comment out the compile-theme
+goal from vaadin-maven-plugin configuration. To remove a possibly existing
 pre-compiled theme, run "mvn clean package" once.
 
-When using the runtime compiler, running the application in the "run" mode 
+When using the runtime compiler, running the application in the "run" mode
 (rather than in "debug" mode) can speed up consecutive theme compilations
 significantly.
 
