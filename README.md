@@ -16,6 +16,11 @@ mvn -B archetype:generate \
 -Dversion=0.1.0-SNAPSHOT
 ```
 
+## Extension
+
+Based on [this](https://vaadin.com/blog/-/blogs/using-vaadin-grid) and [this](https://vaadin.com/docs/-/part/framework/components/components-grid.html) and [this](https://vaadin.com/docs/-/part/framework/datamodel/datamodel-container.html) the original archetype was extended with a _filterable_ `Grid`. 
+
+
 Workflow
 ========
 
