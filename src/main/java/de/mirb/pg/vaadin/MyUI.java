@@ -48,27 +48,25 @@ public class MyUI extends UI {
   }
 
   private void refreshTable(Grid grid) {
-    IndexedContainer container = getIndexedContainer();
-    grid.setContainerDataSource(container);
+    grid.setContainerDataSource(getIndexedContainer());
 
     int hrc = grid.getHeaderRowCount();
     for (int i = 0; i < hrc; i++) {
       // Set up a filter for all columns
       Grid.HeaderRow filterRow = grid.getHeaderRow(i);
       Container.Indexed cds = grid.getContainerDataSource();
-      for (Object pid : cds.getContainerPropertyIds()) {
+      cds.getContainerPropertyIds().forEach(pid -> {
         Grid.HeaderCell cell = filterRow.getCell(pid);
         if(cell.getCellType() == GridStaticCellType.WIDGET && cds instanceof IndexedContainer) {
-          // Have an input field to use for filter
           TextField ff = (TextField) cell.getComponent();
-          ((IndexedContainer) cds).removeContainerFilters(pid);
 
-          // (Re)create the filter if necessary
           if (!ff.getValue().isEmpty()) {
-            container.addContainerFilter(new SimpleStringFilter(pid, ff.getValue(), true, false));
+            IndexedContainer ic = (IndexedContainer) cds;
+            ic.removeContainerFilters(pid);
+            ic.addContainerFilter(new SimpleStringFilter(pid, ff.getValue(), true, false));
           }
         }
-      }
+      });
     }
 
   }
